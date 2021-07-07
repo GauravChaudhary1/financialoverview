@@ -1,0 +1,225 @@
+{
+    "_version": "1.32.0",
+    "sap.app": {
+        "id": "com.sap.fiori.fioverview",
+        "type": "application",
+        "i18n": "i18n/i18n.properties",
+        "applicationVersion": {
+            "version": "1.0.0"
+        },
+        "title": "{{appTitle}}",
+        "description": "{{appDescription}}",
+        "tags": {
+            "keywords": []
+        },
+        "dataSources": {
+            "mainService": {
+                "uri": "/sap/opu/odata/sap/ZFIOVERVIEW_DB_SRV/",
+                "type": "OData",
+                "settings": {
+                    "annotations": [
+                        "ZFIOVERVIEW_DB_ANNO_MDL",
+                        "annotation"
+                    ],
+                    "localUri": "localService/metadata.xml",
+                    "odataVersion": "2.0"
+                }
+            },
+            "ZFIOVERVIEW_DB_ANNO_MDL": {
+                "uri": "/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Annotations(TechnicalName='ZFIOVERVIEW_DB_ANNO_MDL',Version='0001')/$value/",
+                "type": "ODataAnnotation",
+                "settings": {
+                    "localUri": "localService/ZFIOVERVIEW_DB_ANNO_MDL.xml"
+                }
+            },
+            "annotation": {
+                "type": "ODataAnnotation",
+                "uri": "annotations/annotation.xml",
+                "settings": {
+                    "localUri": "annotations/annotation.xml"
+                }
+            }
+        },
+        "offline": false,
+        "sourceTemplate": {
+            "id": "OVP.smartovptemplate",
+            "version": "1.41.1"
+        }
+    },
+    "sap.ui": {
+        "technology": "UI5",
+        "icons": {
+            "icon": "",
+            "favIcon": "",
+            "phone": "",
+            "phone@2": "",
+            "tablet": "",
+            "tablet@2": ""
+        },
+        "deviceTypes": {
+            "desktop": true,
+            "tablet": true,
+            "phone": true
+        },
+        "supportedThemes": [
+            "sap_hcb",
+            "sap_belize"
+        ]
+    },
+    "sap.ui5": {
+        "resources": {
+            "js": [],
+            "css": []
+        },
+        "dependencies": {
+            "minUI5Version": "1.65.0",
+            "libs": {
+                "sap.ovp": {}
+            },
+            "components": {}
+        },
+        "models": {
+            "i18n": {
+                "type": "sap.ui.model.resource.ResourceModel",
+                "uri": "i18n/i18n.properties",
+                "preload": false
+            },
+            "@i18n": {
+                "type": "sap.ui.model.resource.ResourceModel",
+                "uri": "i18n/i18n.properties"
+            },
+            "mainService": {
+                "dataSource": "mainService",
+                "preload": true,
+                "settings": {
+                    "defaultCountMode": "Inline"
+                }
+            }
+        },
+        "extends": {
+            "extensions": {
+                "sap.ui.controllerExtensions": {
+                    "sap.ovp.app.Main": {
+                        "controllerName": "com.sap.fiori.fioverview.ext.custom"
+                    }
+                }
+            }
+        },
+        "contentDensities": {
+            "compact": true,
+            "cozy": true
+        }
+    },
+    "sap.fiori": {
+        "registrationIds": [],
+        "archeType": "analytical"
+    },
+    "sap.ovp": {
+        "globalFilterModel": "mainService",
+        "globalFilterEntityType": "ZC_Finance_RevenueType",
+        "containerLayout": "resizable",
+        "enableLiveFilter": true,
+        "considerAnalyticalParameters": false,
+        "chartSettings": {
+            "showDataLabel": true
+        },
+        "cards": {
+            "card_Revenue": {
+                "model": "mainService",
+                "template": "sap.ovp.cards.charts.analytical",
+                "settings": {
+                    "title": "{{Revenue}}",
+                    "entitySet": "ZC_Finance_Revenue",
+                    "chartAnnotationPath": "com.sap.vocabularies.UI.v1.Chart#Revenue",
+                    "measureAggregate": {
+                        "Axis1": "sum"
+                    }
+                }
+            },
+            "card_CustOut": {
+                "model": "mainService",
+                "template": "sap.ovp.cards.charts.analytical",
+                "settings": {
+                    "title": "{{CustomerOutstanding}}",
+                    "entitySet": "ZC_FINANCE_CUSTOUT",
+                    "chartAnnotationPath": "com.sap.vocabularies.UI.v1.Chart#CustOutstanding"
+                }
+            },
+            "card_Purchasing": {
+                "model": "mainService",
+                "template": "sap.ovp.cards.charts.analytical",
+                "settings": {
+                    "title": "{{Purchasing}}",
+                    "entitySet": "ZC_FINANCE_PURCHSING",
+                    "chartAnnotationPath": "com.sap.vocabularies.UI.v1.Chart#Purchasing"
+                }
+            },
+            "card_Supplier": {
+                "model": "mainService",
+                "template": "sap.ovp.cards.charts.analytical",
+                "settings": {
+                    "title": "{{Supplier}}",
+                    "entitySet": "ZC_FINANCE_Supplier",
+                    "chartAnnotationPath": "com.sap.vocabularies.UI.v1.Chart#Supplier"
+                }
+            },
+            "card_travel": {
+                "model": "mainService",
+                "template": "sap.ovp.cards.charts.analytical",
+                "settings": {
+                    "title": "{{BankFunding}}",
+                    "entitySet": "ZC_FINANCE_BankFunding",
+                    "chartAnnotationPath": "com.sap.vocabularies.UI.v1.Chart#BankFunding"
+                }
+            },
+            "card_finexpense": {
+                "model": "mainService",
+                "template": "sap.ovp.cards.charts.analytical",
+                "settings": {
+                    "title": "{{FinExpense}}",
+                    "entitySet": "ZC_FINANCE_FINExpense",
+                    "chartAnnotationPath": "com.sap.vocabularies.UI.v1.Chart#FinExpense"
+                }
+            },
+            "card_liability": {
+                "model": "mainService",
+                "template": "sap.ovp.cards.charts.analytical",
+                "settings": {
+                    "title": "{{Liability}}",
+                    "entitySet": "ZC_FINANCE_Liability",
+                    "chartAnnotationPath": "com.sap.vocabularies.UI.v1.Chart#Liability"
+                }
+            },
+            "card_EmpBenefits": {
+                "model": "mainService",
+                "template": "sap.ovp.cards.charts.analytical",
+                "settings": {
+                    "title": "{{EmpBenefits}}",
+                    "entitySet": "ZC_FINANCE_EmpBenefits",
+                    "chartAnnotationPath": "com.sap.vocabularies.UI.v1.Chart#EmpBenefits"
+                }
+            },
+            "card_LogExpense": {
+                "model": "mainService",
+                "template": "sap.ovp.cards.charts.analytical",
+                "settings": {
+                    "title": "{{LogExpense}}",
+                    "entitySet": "ZC_FINANCE_LogExpense",
+                    "chartAnnotationPath": "com.sap.vocabularies.UI.v1.Chart#LogExpense"
+                }
+            },
+            "card_BankFunding": {
+                "model": "mainService",
+                "template": "sap.ovp.cards.charts.analytical",
+                "settings": {
+                    "title": "{{BankFunding}}",
+                    "entitySet": "ZC_FINANCE_BankFunding",
+                    "chartAnnotationPath": "com.sap.vocabularies.UI.v1.Chart#BankFunding"
+                }
+            }
+        }
+    },
+    "sap.ui.generic.app": {
+        "settings": {}
+    }
+}

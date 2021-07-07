@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData">
+    <edmx:Reference Uri="http://192.168.1.109:8000/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMON',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Common.v1" Alias="Common"/>
+    </edmx:Reference>
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema Namespace="ZFIOVERVIEW_DB_SRV" xml:lang="en" sap:schema-version="1" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+            <EntityType Name="ZC_Finance_RevenueType" sap:label="Finance OverView Dashboard - Revenue" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="FinancialYear"/>
+                    <PropertyRef Name="Category"/>
+                    <PropertyRef Name="Level2"/>
+                    <PropertyRef Name="ProfitCenterGrp"/>
+                </Key>
+                <Property Name="FinancialYear" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="NonNegative" sap:label="Fiscal Year"/>
+                <Property Name="Category" Type="Edm.String" Nullable="false" MaxLength="20" sap:label="Level 1" sap:quickinfo="GL Group - Level 1"/>
+                <Property Name="Level2" Type="Edm.String" Nullable="false" MaxLength="20" sap:display-format="UpperCase" sap:label="Level 2" sap:quickinfo="GL Level 2"/>
+                <Property Name="ProfitCenterGrp" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:label="Profit Center Group"/>
+                <Property Name="Amount" Type="Edm.Decimal" Precision="24" Scale="3" sap:unit="PB510013310A3B77129C2F823F757CAB0"/>
+            </EntityType>
+            <EntityContainer Name="ZFIOVERVIEW_DB_SRV_Entities" m:IsDefaultEntityContainer="true" sap:supported-formats="atom json xlsx">
+                <EntitySet Name="ZC_Finance_Revenue" EntityType="ZFIOVERVIEW_DB_SRV.ZC_Finance_RevenueType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+            </EntityContainer>
+            <atom:link rel="self" href="http://192.168.1.109:8000/sap/opu/odata/sap/ZFIOVERVIEW_DB_SRV/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+            <atom:link rel="latest-version" href="http://192.168.1.109:8000/sap/opu/odata/sap/ZFIOVERVIEW_DB_SRV/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>
